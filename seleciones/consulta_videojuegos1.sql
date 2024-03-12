@@ -1,0 +1,1 @@
+select *from videojuegos where nombre like 'C%'
