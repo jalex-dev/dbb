@@ -30,7 +30,29 @@ add constraint cuentas_usuario_fk
 foreign key (cedula_propietario)
 references usuario(cedula)
 
-
+--insercion de usario
+INSERT INTO usuario (cedula, nombre, apellido, tipo_cuenta, limite_credito)
+VALUES
+    ('12345', 'Jona', 'Perez', 'ahorro', 12.3),
+    ('22346', 'María', 'López', 'corriente', 15.0),
+    ('32347', 'Carlos', 'González', 'ahorro', 10.5),
+    ('42348', 'Ana', 'Martínez', 'corriente', 20.0),
+    ('52349', 'Pedro', 'García', 'corriente', 18.7),
+    ('62350', 'Laura', 'Rodríguez', 'corriente', 14.2);
+   
+   -- insercion de cuenta 
+INSERT INTO cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+VALUES
+    ('12345', '12345', '2022-08-27', 200),
+    ('23456', '22346', '2022-09-15', 500),
+    ('34567', '22346', '2022-10-03', 700),
+    ('45678', '52349', '2022-11-20', 800),
+    ('56789', '52349', '2023-01-05', 300),
+    ('67890', '62350', '2023-03-12', 400),
+    ('78901', '32347', '2023-05-18', 900),
+    ('89012', '32347', '2023-07-01', 600),
+    ('90123', '42348', '2023-08-09', 150),
+    ('01234', '42348', '2023-09-10', 1000);   
    
 -- creacion de clientes
 
@@ -62,6 +84,27 @@ alter table compras
 add constraint compras_clientes_fk 
 foreign key (cedula)
 references clientes(cedula)
+
+INSERT INTO public.clientes (cedula, nombre, apellido)
+VALUES
+    ('1234567890', 'Juan', 'Perez'),
+    ('2345678901', 'María', 'López'),
+    ('3456789012', 'Pedro', 'González'),
+    ('4567890123', 'Ana', 'Martínez'),
+    ('6678901234', 'Monica', 'García');
+   
+INSERT INTO compras (id_compras, cedula, fecha_compra, monto)
+VALUES
+    (1, '1234567890', '2022-01-05', 50.00),
+    (2, '2345678901', '2022-02-10', 100.50),
+   	(3, '3456789012', '2022-03-15', 75.25),
+    (4, '4567890123', '2022-04-20', 120.75),
+   	(5, '5678901234', '2022-05-25', 90.00),
+   	(6, '5678901234', '2022-06-30', 200.00),
+   	(7, '5678901234', '2022-07-05', 150.25),
+  	(8, '3456789012', '2022-08-10', 80.50),
+    (9, '1234567890', '2022-09-15', 175.75),
+    (11, '6678901234', '2022-10-20', 300.00);
    
    
 --- creacion de tabla producto
@@ -93,6 +136,58 @@ foreign key (codigo_producto)
 references productos(codigo)
 
 
+
+insert into productos(codigo,nombre,descripcion, precio,stock)
+values(12,'galleta','sabor chocolate',2.00,12);
+
+insert into productos(codigo,nombre,descripcion, precio,stock)
+values(13,'caramelos','sabor fresa',1.00,2);
+
+insert into productos(codigo,nombre,descripcion, precio,stock)
+values(14,'bebidas','sabor tropical',2.00,20);
+
+insert into productos(codigo,nombre,descripcion, precio,stock)
+values(15,'pera','',1.00,20);
+
+insert into productos(codigo,nombre,descripcion, precio,stock)
+values(16,'mazanas','',1.00,16);
+insert into productos(codigo,nombre, precio,stock)
+values(17,'mandarinas',1.00,34);
+insert into productos(codigo,nombre, precio,stock)
+values(18,'manzanas verdes',1.50,25);
+insert into productos(codigo,nombre, precio,stock)
+values(19,'mango',1.34,22);
+  
+
+
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(1,13,'2024/08/22',12);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(2,19,'2024/08/29',4);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(3,13,'2024/08/29',8);
+
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(5,13,'2024/08/22',12);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(6,19,'2024/08/29',4);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(7,13,'2024/08/29',8);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(8,13,'2024/08/22',12);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(9,19,'2024/08/29',4);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(10,13,'2024/08/29',8);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(11,13,'2024/08/22',12);
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(12,19,'2024/08/29',4);
+
+insert into ventas (id_ventas, codigo_producto, fecha_venta, cantidad)
+values(3,13,'2024/08/29',8);
+
+
 --creacion videojuegos
 
 create table videojuegos(
@@ -120,120 +215,49 @@ foreign key (codigo_videojuego)
 references videojuegos(codigo)
 
 
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(1,'juego1','juego de gerra',10);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(2,'juego2','juego de carros',20);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(3,'juego3','juego de aventura',30);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(4,'juego4','juego de razonamiento',40);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(5,'juego5','juego de combate',50);
 
--- creacion studiantes
-drop table estudiantes 
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(30,'juego6','juego de aventura',30);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(40,'juego45','juego de razonamiento',40);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(50,'juego50','juego de combate',50);
 
-create table estudiantes(
-	cedula char(10) not null,
-	nombre varchar(50)not null,
-	apellido varchar (50)not null,
-	enail varchar (50) not null,
-	fecha_nacimiento date,
-	codigo_profesor int not null,
-	constraint estudiantes_key primary key (cedula)
-)
-create table profesores(
-	codigo int ,
-	nombre varchar,
-	constraint profesores_key primary key (codigo)
-	
-)
-
-alter table estudiantes
-add constraint estudiantes_profesores_fk 
-foreign key (codigo_profesor)
-references profesores (codigo)
-
-
-
--- creacion resgistro-entrada
-
-drop table registro_entrada;
-create table registro_entrada(
-	codigo_registro int not null,
-	cedula_empleado char (10) not null,
-	fecha date not null,
-	hora time not null,
-	codigo_empleo int not null,
-	constraint registro_entrada_key primary key(codigo_registro)
-)
-create table empleado(
-	codigo_empleado int,
-	nombre varchar(50),
-	fecha date,
-	hora time, 
-	
-	constraint empleado_key primary key (codigo_empleado)
-	
-)
-
-alter table registro_entrada
-add constraint registo_entrada_empleado_fk
-foreign key (codigo_empleado)
-references empleado(codigo_empleado)
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(12,'Gof of Work','Guerra',80);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(13,'Free Fire','juego de guera',40);
+insert into videojuegos(codigo,nombre,descripcion,valoracion)
+values(14,'Mario Kart','juego de aventura',50);
 
 
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(12,'Play Station',1);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(13,'Play Station',11);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(14,'XBox',11);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(15,'Nitenton',8);
 
-create table persona(
-	cedula char(10),
-	nombre varchar(50),
-	apellido varchar(50),
-	estatura decimal(10,2),
-	fecha_nacimento date ,
-	hora_nacimeinto time,
-	cantidad_ahorrada money ,
-	numeros_hijos int ,
-	
-	constraint persona_key primary key(cedula)
-)
-
-create table prestamo(
-	cedula char(10),
-	monto money,
-	fecha_prestamo date,
-	hora_prestamo time,
-	grante varchar(50),
-	constraint prestamo_key primary key (cedula)
-)
-
-alter table prestamo 
-add constraint prestamo_persona_fk 
-foreign key (cedula)
-references personas(cedula)
-
-select *from personas p
-
-
--- creaccion de transacciones
-
-create table transacciones(
-
-	codigo int not null,
-	numero_cuenta char(5) not null,
-	monto money not null,
-	tipo char(1)not null,
-	fecha date not null,
-	hora time not null,
-	
-	constraint transacciones_key primary key (codigo)
-)
-
-select *from transacciones t 
-create table banco(
-	codigo_banco int,
-	codidigo_transaccion int ,
-	detalle varchar(100),
-	constraint banco_key primary key (codigo_banco)
-)
-
-
-alter table banco
-add constraint banco_transaccion_key 
-foreign key (codidigo_transaccion)
-references transacciones(codigo)
-
-
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(1,'Play Station',30);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(3,'Play Station',50);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(4,'XBox',5);
+insert into plataforma(id_plataforma, nombre_plataforma, codigo_videojuego)
+values(15,'Nitenton',40);
 
 
 
